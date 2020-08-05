@@ -1,0 +1,109 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mer. 05 août 2020 à 21:06
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.3.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `production`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `articles`
+--
+
+DROP TABLE IF EXISTS `articles`;
+CREATE TABLE IF NOT EXISTS `articles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(250) NOT NULL,
+  `date_pub` date NOT NULL,
+  `texte` text NOT NULL,
+  `auteur` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `articles`
+--
+
+INSERT INTO `articles` (`id`, `titre`, `date_pub`, `texte`, `auteur`) VALUES
+(1, 'Premier article', '2020-04-03', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'naima'),
+(2, 'DeuxiÃ¨me article', '2020-04-03', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'naima');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandes`
+--
+
+DROP TABLE IF EXISTS `commandes`;
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `date_livraison` datetime NOT NULL,
+  `produit` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `commandes`
+--
+
+INSERT INTO `commandes` (`id`, `id_user`, `date_livraison`, `produit`) VALUES
+(32, 3, '2020-11-02 00:00:00', 'base'),
+(33, 4, '2020-08-03 00:00:00', 'luxe'),
+(34, 4, '2020-08-03 00:00:00', 'luxe'),
+(35, 4, '2020-08-09 00:00:00', 'pas base'),
+(36, 4, '2020-08-09 00:00:00', 'pas base'),
+(37, 4, '2020-08-09 00:00:00', 'pas base'),
+(38, 4, '2020-09-09 00:00:00', 'luxe');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(250) NOT NULL,
+  `prenom` varchar(250) NOT NULL,
+  `tel` int(250) NOT NULL,
+  `courriel` varchar(250) NOT NULL,
+  `pswd` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mail` (`courriel`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `nom`, `prenom`, `tel`, `courriel`, `pswd`) VALUES
+(1, 'sammouda', 'safa', 0, 'dfd@hotmail.com', '$2y$10$9zFizidx7z7PIWY33VpJSezDu3X91dUqJrcaScFsnmPPWJAQv1K3y'),
+(2, 'sammouda', 'safa', 0, 'dfdss@hotmail.com', '$2y$10$qXbs/hmYNvHHvuOsZCuUTOyJ.WiKATYVvb/47v7r1AlDFnEgr6Xsi'),
+(3, 'naima', 'nam', 0, 'aas@ff.com', '$2y$10$dSZVv53k6m5NnS.pjAPFhOs6FtuNr6iK2dQJWQa2.ykvLEMSbBlom'),
+(4, 'lydia', 'loulu', 0, 'loulu@gmail.com', '$2y$10$jv4yjXxEnDYbJqGRLnxgPOM2YrFwgDpivXRH/822DapBDd5TKfzL6'),
+(5, 'sami', 'sam', 28736094, 'saw@saw.com', '$2y$10$mwI8CCE53G1wR4zi9R5ijeT56N6.qIQY5KlvU4jJgoLwDOZ5iv/6q');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
