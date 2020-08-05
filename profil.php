@@ -99,7 +99,7 @@ if (!empty($_POST['ajout_btn'])) {
           <input name='confirm_btn' class="btn" type="submit" value="Commander">
         </fieldset>
       </form>  
-    </div>
+  </div>
      <!-- Blog section-->
      <h2 class="header center orange-text">Blog</h2>
     
@@ -125,24 +125,15 @@ if (!empty($_POST['ajout_btn'])) {
               </div>
               <div class="acc-item">
                 <h2 class="acc-head">Supprimer Article</h2>
-                <div class="acc-content">
-                <?php foreach($liste_articles as $article){ ?>
-                  <ul>
-                    <a href="delete_article.php?id=<?php echo $article->id;?>">
-                    <li><?php echo $article->titre;?></li></a>
-                                 </ul>
-                <?php } ?>
+                 <div class="acc-content">
+                  <?php foreach($liste_articles as $article){ ?>
+                   <ul>
+                     <a href="delete_article.php?id=<?php echo $article->id;?>">
+                     <li><?php echo $article->titre;?></li></a>
+                    </ul>
+                  <?php } ?>
                 </div>
               </div>
           </section>        
-
-
-
-
-
-
-
-
-  </div>
  </div>
   <?php include_once './includes/footer.php';?>
